@@ -3,6 +3,7 @@ import { Saira_Extra_Condensed } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import FloatingBookButton from "@/components/FloatingBookButton";
 
 const headingFont = Saira_Extra_Condensed({
   subsets: ["latin"],
@@ -60,11 +61,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-body bg-background text-foreground antialiased transition-colors duration-150">
+      <body className="font-body bg-background text-foreground/75 antialiased transition-colors duration-150">
         {children}
+        <FloatingBookButton />
         {process.env.NODE_ENV === "production" && <Analytics />}
+        <Footer />
       </body>
-      <Footer />
     </html>
   );
 }

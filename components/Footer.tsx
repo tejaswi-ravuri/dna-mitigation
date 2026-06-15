@@ -1,19 +1,77 @@
+"use client";
+
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+// Pages associated with criminal/sentencing work
+const CRIMINAL_PAGES = [
+  "/",
+  "/practice-areas/federal-sentencing",
+  "/practice-areas/white-collar",
+  "/practice-areas/narrative-mitigation",
+];
+
+// Pages associated with civil/injury work
+const INJURY_PAGES = [
+  "/practice-areas/personal-injury",
+  "/practice-areas/workplace-injury",
+  "/practice-areas/wrongful-death",
+];
+
+// Shared pages that inherit tagline from previous page
+const SHARED_PAGES = [
+  "/case-studies",
+  "/testimonials",
+  "/contact",
+  "/pay-online",
+];
+
+const CRIMINAL_TAGLINE = (
+  <>
+    Nothing shows the human being behind the conduct like a mitigation video.
+    <br /> We make the ones that change sentences.
+  </>
+);
+
+const INJURY_TAGLINE = (
+  <>
+    Nothing shows the human being behind the injury like a video.
+    <br /> We make the ones that change verdicts.
+  </>
+);
 
 export default function Footer() {
+  const pathname = usePathname();
+  const [tagline, setTagline] = useState<React.ReactNode>(CRIMINAL_TAGLINE);
+
+  useEffect(() => {
+    const isSharedPage = SHARED_PAGES.some((p) => pathname.startsWith(p));
+
+    if (!isSharedPage) {
+      // Not a shared page — determine tagline directly from current path
+      if (INJURY_PAGES.some((p) => pathname.startsWith(p))) {
+        setTagline(INJURY_TAGLINE);
+        sessionStorage.setItem("dna-tagline", "injury");
+      } else {
+        // Defaults to criminal (home + all criminal practice area pages)
+        setTagline(CRIMINAL_TAGLINE);
+        sessionStorage.setItem("dna-tagline", "criminal");
+      }
+    } else {
+      // Shared page — read the last stored tagline from sessionStorage
+      const stored = sessionStorage.getItem("dna-tagline");
+      if (stored === "injury") {
+        setTagline(INJURY_TAGLINE);
+      } else {
+        setTagline(CRIMINAL_TAGLINE);
+      }
+    }
+  }, [pathname]);
+
   return (
     <footer className="relative bg-primary border-t border-accent/30">
-      {/* Schedule Booking Button - Bottom Right */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <Link
-          href="/schedule-consultation"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gold-metallic text-primary rounded-lg hover:bg-accent/90 transition-all duration-200 font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105"
-        >
-          <span>Book Consultation</span>
-        </Link>
-      </div>
-
       <div className="pt-12 lg:pt-16 pb-12 lg:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -26,9 +84,7 @@ export default function Footer() {
                 DNA Mitigation
               </h3>
               <p className="text-foreground/70 text-sm leading-relaxed mb-4">
-                Strategic sentencing advocacy focused on early mitigation
-                strategy. We shape Pre-Sentence Investigation Reports through
-                comprehensive planning and expert federal sentencing advocacy.
+                {tagline}
               </p>
               <p className="text-foreground/60 text-xs">
                 © {new Date().getFullYear()} DNA Mitigation. All rights
@@ -95,10 +151,10 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/payment"
+                    href="/get-quote"
                     className="text-foreground/70 hover:text-accent transition-colors"
                   >
-                    Pay Online
+                    Get Quote
                   </Link>
                 </li>
               </ul>
@@ -131,10 +187,10 @@ export default function Footer() {
                     className="mt-0.5 text-accent flex-shrink-0"
                   />
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+13104302368"
                     className="hover:text-accent transition-colors"
                   >
-                    (123) 456-7890
+                    (310) 430-2368
                   </a>
                 </div>
               </div>
@@ -148,14 +204,6 @@ export default function Footer() {
                 DNA Mitigation - Federal Sentencing Advocacy & Mitigation
                 Strategy
               </p>
-              <div className="flex gap-6">
-                <Link href="#" className="hover:text-accent transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="#" className="hover:text-accent transition-colors">
-                  Terms of Service
-                </Link>
-              </div>
             </div>
           </div>
         </div>

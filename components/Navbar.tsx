@@ -39,9 +39,9 @@ export default function Navbar() {
     { label: "Federal Sentencing Mitigation", slug: "federal-sentencing" },
     { label: "White Collar Criminal Defense", slug: "white-collar" },
     { label: "Catastrophic Personal Injury", slug: "personal-injury" },
-    { label: "Workplace Catastrophic Injury", slug: "workplace-injury" },
+    { label: "Catastrophic Workplace Injury", slug: "workplace-injury" },
     { label: "Wrongful Death Litigation", slug: "wrongful-death" },
-    { label: "Narrative Mitigation Strategy", slug: "narrative-strategy" },
+    { label: "Narrative Mitigation Strategy", slug: "narrative-mitigation" },
   ];
 
   const navLinks = [
@@ -50,7 +50,7 @@ export default function Navbar() {
     { label: "Case Results", href: "/case-studies" },
     { label: "Testimonials", href: "/testimonials" },
     { label: "Contact Us", href: "/contact" },
-    { label: "Pay Online", href: "/payment" },
+    { label: "Get Quote", href: "/get-quote" },
   ];
 
   return (
@@ -153,10 +153,10 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/payment"
+              href="/get-quote"
               className="text-foreground hover:text-accent transition-colors duration-200 text-sm font-medium relative group"
             >
-              Pay Online
+              Get Quote
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
             </Link>
           </div>

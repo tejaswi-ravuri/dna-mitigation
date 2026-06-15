@@ -2,12 +2,11 @@
 
 import { useState, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 
 interface Block {
   id: string;
   title: string;
-  preview: string;
+  preview: ReactNode;
   link: string;
   content: ReactNode;
 }
@@ -16,61 +15,97 @@ const homeBlocks: Block[] = [
   {
     id: "mitigation-videos",
     title: "Mitigation Videos",
-    preview: `Letters and sentencing memoranda can describe remorse.
-A mitigation video allows the court to see and feel the human being behind the offense conduct.
-
-Our work is built around one objective: shaping institutional perception before the PSR, prosecutorial narrative, and sentencing posture become fixed.`,
+    preview: (
+      <>
+        <span>
+          Letters and sentencing memoranda can describe remorse. A mitigation
+          video allows the court{" "}
+        </span>
+        <strong className="text-foreground font-semibold">
+          to see and feel the human being behind the offense conduct.
+        </strong>
+        <br />
+        <br />
+        <span>Our work is built around one objective: </span>
+        <strong className="text-foreground font-semibold">
+          shaping institutional perception
+        </strong>
+        <span>
+          {" "}
+          before the PSR, prosecutorial narrative, and sentencing posture become
+          fixed.
+        </span>
+      </>
+    ),
     link: "How Early Mitigation Videos Shape the PSR →",
     content: (
       <>
         <p>
           Built through structured elicitation interviews refined case-by-case
           across more than 30 federal indictments, our process develops credible
-          evidence of remorse, accountability, rehabilitation, family
-          responsibility, restitution efforts, and personal character the court
-          can emotionally understand, not merely read.
+          evidence of{" "}
+          <strong className="text-foreground font-semibold">
+            remorse, accountability, rehabilitation, family responsibility,
+            restitution efforts, and personal character
+          </strong>{" "}
+          the court can emotionally understand, not merely read.
         </p>
         <br />
         <p>
           Where relevant, the process also uncovers the developmental,
           psychological, familial, and generational factors that shaped the
           individual long before the offense conduct occurred, allowing
-          probation, prosecutors, and the judge to see the individual in full
-          context, not solely through the offense conduct.
+          probation, prosecutors, and the judge to see the individual in{" "}
+          <strong className="text-foreground font-semibold">
+            full context, not solely through the offense conduct.
+          </strong>{" "}
         </p>
         <br />
-        <p>A human being, not a file.</p>
+        <p>
+          <strong className="text-foreground font-semibold">
+            A human being, not a file.
+          </strong>
+        </p>
         <br />
         <p>
           Deployed before the PSR is written, our mitigation videos reach
           probation while their understanding of your client is still forming.
-          Introduced early, they humanize the defendant before prosecutorial and
-          probation narratives harden into recommendation.
+          Introduced early,{" "}
+          <strong className="text-foreground font-semibold">
+            they humanize the defendant before prosecutorial and probation
+            narratives harden into recommendation.
+          </strong>{" "}
         </p>
         <br />
         <p>
-          At sentencing, it advances every dimension of § 3553(a), including
-          personal history and characteristics, rehabilitation, deterrence,
-          restitution, and recidivism risk, in a way written submissions alone
-          rarely achieve.
+          At sentencing, it advances every dimension of § 3553(a), including{" "}
+          <strong className="text-foreground font-semibold">
+            personal history and characteristics, rehabilitation, deterrence,
+            restitution, and recidivism risk
+          </strong>
+          , in a way written submissions alone rarely achieve.
         </p>
         <br />
         <p>
-          In post-case debriefs, attorneys consistently tell us the same thing:
-          the video changed the outcome.
+          In post-case debriefs, attorneys consistently tell us the same thing:{" "}
+          <strong className="text-foreground font-semibold">
+            the video changed the outcome.
+          </strong>
         </p>
 
         <p>
-          E.D.N.Y. |{" "}
-          <a
-            href="https://www.govinfo.gov/app/details/USCOURTS-nyed-1_20-cr-00272"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent underline underline-offset-4 hover:opacity-80 transition"
-          >
-            Case No. 20-CR-272
-          </a>{" "}
-          | Hon. Pamela Chen | Role: Film, Edit
+          <strong className="text-foreground font-semibold">
+            E.D.N.Y. |{" "}
+            <a
+              href="https://www.govinfo.gov/app/details/USCOURTS-nyed-1_20-cr-00272"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent underline underline-offset-4 hover:opacity-80 transition"
+            >
+              Case No. 20-CR-272
+            </a>{" "}
+            | Hon. Pamela Chen | Role: Film, Edit
+          </strong>
         </p>
         <p>
           Including a $76 million damages award against a major construction
@@ -86,13 +121,19 @@ Our work is built around one objective: shaping institutional perception before 
         </p>
 
         <p>
-          Two defendants received 6-month custodial sentences against an
-          87-month guideline range. One received probation.
+          <strong className="text-foreground font-semibold">
+            Two defendants received 6-month custodial sentences against an
+            87-month guideline range. One received probation.
+          </strong>
         </p>
 
         <br />
 
-        <p>Related coverage:</p>
+        <p>
+          <strong className="text-foreground font-semibold">
+            Related coverage:
+          </strong>
+        </p>
 
         <p>
           <a
@@ -122,12 +163,24 @@ Our work is built around one objective: shaping institutional perception before 
   {
     id: "testimonial-letters",
     title: "Testimonial Letters",
-    preview: `Testimonial letters designed to reinforce credibility, accountability, restitution efforts, family responsibility, and the broader human context courts evaluate under § 3553(a).`,
+    preview: (
+      <>
+        <span>Testimonial letters designed to reinforce </span>
+        <strong className="text-foreground font-semibold">
+          credibility, accountability, restitution efforts, family
+          responsibility, and the broader human context{" "}
+        </strong>
+        <span>courts evaluate under § 3553(a).</span>
+      </>
+    ),
     link: "How Judges Actually Read Testimonial Letters →",
     content: (
       <>
         <p>
-          Most testimonial letters fail for the same reason: they try too hard.
+          Most testimonial letters fail for the same reason:{" "}
+          <strong className="text-foreground font-semibold">
+            they try too hard.
+          </strong>
         </p>
 
         <br />
@@ -148,13 +201,10 @@ Our work is built around one objective: shaping institutional perception before 
         <p>
           Built through extensive federal sentencing exposure and post-case
           attorney debriefs, our approach is grounded in what consistently
-          resonates with courts: specificity, restraint, credibility, and
-          authentic human detail.
-        </p>
-
-        <br />
-
-        <p>
+          resonates with courts:{" "}
+          <strong className="text-foreground font-semibold">
+            specificity, restraint, credibility, and authentic human detail.
+          </strong>
           The strongest letters do not argue sentencing. They reveal character
           through lived experience, measured observations, and personal truth
           without sounding strategic or performative.
@@ -165,7 +215,7 @@ Our work is built around one objective: shaping institutional perception before 
         <p>
           Where appropriate, our process identifies developmental, familial,
           psychological, or generational factors that help explain the
-          defendant’s life trajectory and broader human context while preserving
+          defendant's life trajectory and broader human context while preserving
           personal accountability.
         </p>
 
@@ -174,35 +224,36 @@ Our work is built around one objective: shaping institutional perception before 
         <p>
           We carefully coordinate what is best conveyed through letters versus
           mitigation video so the narrative remains cohesive rather than
-          repetitive.
+          repetitive. Letters are often most effective for documenting{" "}
+          <strong className="text-foreground font-semibold">
+            caregiving responsibilities, restitution efforts, medical realities,
+            long-term character observations, and factual human context.
+          </strong>{" "}
+          Mitigation video more powerfully captures{" "}
+          <strong className="text-foreground font-semibold">
+            emotional nuance, accountability, remorse, rehabilitation, and lived
+            human presence
+          </strong>{" "}
+          the court can both hear and see.
         </p>
 
         <br />
 
         <p>
-          Letters are often most effective for documenting caregiving
-          responsibilities, restitution efforts, medical realities, long-term
-          character observations, and factual human context.
+          <strong className="text-foreground font-semibold">
+            Less is often more.
+          </strong>
         </p>
-
-        <br />
-
-        <p>
-          Mitigation video more powerfully captures emotional nuance,
-          accountability, remorse, rehabilitation, and lived human presence the
-          court can both hear and see.
-        </p>
-
-        <br />
-
-        <p>Less is often more.</p>
 
         <br />
 
         <p>
           While we have handled cases involving 344 testimonial letters that
           contributed to meaningful sentencing reductions, judges rarely
-          remember volume. They remember credibility.
+          remember volume.
+          <strong className="text-foreground font-semibold">
+            They remember credibility.
+          </strong>
         </p>
 
         <br />
@@ -224,14 +275,28 @@ Our work is built around one objective: shaping institutional perception before 
   {
     id: "pre-psr-documentation",
     title: "Pre-PSR Documentation",
-    preview: `Pre-PSR documentation strategically curated to substantiate rehabilitation, accountability, restitution efforts, and meaningful corrective action before probation recommendations solidify under § 3553(a).`,
+    preview: (
+      <>
+        <span>
+          Pre-PSR documentation strategically curated to substantiate{" "}
+        </span>
+        <strong className="text-foreground font-semibold">
+          rehabilitation, accountability, restitution efforts, and meaningful
+          corrective action
+        </strong>
+        <span> before probation recommendations solidify under § 3553(a).</span>
+      </>
+    ),
     link: "How Documentation Shapes the PSR →",
     content: (
       <>
         <p>
           The right documentation can materially influence how probation and the
-          court evaluate credibility, rehabilitation, restitution, and future
-          risk before sentencing recommendations are finalized.
+          court evaluate{" "}
+          <strong className="text-foreground font-semibold">
+            credibility, rehabilitation, restitution, and future risk
+          </strong>{" "}
+          before sentencing recommendations are finalized.
         </p>
 
         <br />
@@ -240,7 +305,10 @@ Our work is built around one objective: shaping institutional perception before 
           Medical history, treatment records, educational achievements,
           charitable involvement, restitution evidence, community support, and
           documented post-offense conduct often carry the greatest persuasive
-          value when presented with clarity, restraint, and strategic relevance.
+          value when presented with{" "}
+          <strong className="text-foreground font-semibold">
+            clarity, restraint, and strategic relevance.
+          </strong>{" "}
         </p>
 
         <br />
@@ -248,21 +316,21 @@ Our work is built around one objective: shaping institutional perception before 
         <p>
           Our process carefully coordinates supporting documentation alongside
           mitigation videos and testimonial letters so each element reinforces
-          the broader mitigation narrative without unnecessary repetition.
+          the broader mitigation narrative without unnecessary repetition. The
+          result is a more cohesive and credible sentencing presentation
+          supported not only by emotion, but by{" "}
+          <strong className="text-foreground font-semibold">
+            substantiated evidence.
+          </strong>
         </p>
 
         <br />
 
         <p>
-          The result is a more cohesive and credible sentencing presentation
-          supported not only by emotion, but by substantiated evidence.
-        </p>
-
-        <br />
-
-        <p>
-          Precision, organization, and emotional restraint often carry greater
-          persuasive value than volume alone.
+          <strong className="text-foreground font-semibold">
+            Precision, organization, and emotional restraint
+          </strong>{" "}
+          often carry greater persuasive value than volume alone.
         </p>
       </>
     ),
@@ -271,26 +339,48 @@ Our work is built around one objective: shaping institutional perception before 
   {
     id: "3553-focused",
     title: "§ 3553(a) Focused",
-    preview: `Mitigation built around the factors federal judges are required to weigh under 18 U.S.C. § 3553(a), including accountability, rehabilitation, deterrence, restitution, personal history, future risk, and the need for a sentence sufficient, but not greater than necessary.`,
+    preview: (
+      <>
+        <span>
+          Mitigation built around the factors federal judges are required to
+          weigh under 18 U.S.C. § 3553(a), including{" "}
+        </span>
+        <strong className="text-foreground font-semibold">
+          accountability, rehabilitation, deterrence, restitution, personal
+          history, future risk,
+        </strong>
+        <span>
+          {" "}
+          and the need for a sentence sufficient, but not greater than
+          necessary.
+        </span>
+      </>
+    ),
     link: "How § 3553(a) Shapes Sentencing →",
     content: (
       <>
         <p>
           Federal sentencing is not limited to offense conduct alone. Judges are
           required to evaluate the broader context surrounding the defendant,
-          including personal history, demonstrated accountability,
-          rehabilitative efforts, restitution, post-offense conduct, and the
-          likelihood of recidivism.
+          including{" "}
+          <strong className="text-foreground font-semibold">
+            personal history, demonstrated accountability, rehabilitative
+            efforts, restitution, post-offense conduct, and the likelihood of
+            recidivism.
+          </strong>
         </p>
 
         <br />
 
         <p>
           Our work aligns mitigation strategy with the sentencing objectives
-          underlying § 3553(a): not excuse-making or emotional overreach, but
-          credible humanization grounded in accountability, corrective action,
-          meaningful reform, and, where relevant, the deeper life circumstances
-          that help explain the individual before the court.
+          underlying § 3553(a): not excuse-making or emotional overreach, but{" "}
+          <strong className="text-foreground font-semibold">
+            credible humanization grounded in accountability, corrective action,
+            meaningful reform,
+          </strong>{" "}
+          and, where relevant, the deeper life circumstances that help explain
+          the individual before the court.
         </p>
 
         <br />
@@ -298,9 +388,11 @@ Our work is built around one objective: shaping institutional perception before 
         <p>
           The strongest mitigation does not ask the court to ignore the conduct.
           It demonstrates why the individual before the court should not be
-          reduced to the worst decision they made, and why the risk of
-          recidivism is materially lower than the offense conduct alone may
-          suggest.
+          reduced to the worst decision they made, and why{" "}
+          <strong className="text-foreground font-semibold">
+            the risk of recidivism is materially lower
+          </strong>{" "}
+          than the offense conduct alone may suggest.
         </p>
       </>
     ),
@@ -326,78 +418,19 @@ export default function ExpandableContentBlock() {
   return (
     <div className="w-full">
       <div className="hidden md:block">
-        <div className="flex flex-col lg:flex-row gap-8">
-          <motion.div
-            layout
-            className={`w-full ${
-              selectedIndex !== null ? "lg:w-1/3" : "lg:w-full"
-            }`}
-            transition={{ type: "spring", stiffness: 280, damping: 28 }}
-          >
-            <motion.div
-              layout
-              className={`grid gap-4 ${
-                selectedIndex !== null
-                  ? "grid-cols-1"
-                  : "grid-cols-2 lg:grid-cols-4"
-              }`}
-            >
-              {homeBlocks.map((block, index) => (
-                <motion.button
-                  key={block.id}
-                  layout
-                  custom={index}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  onClick={() =>
-                    setSelectedIndex(selectedIndex === index ? null : index)
-                  }
-                  className={`min-h-[420px] px-6 py-6 text-left rounded-lg border-2 transition-all duration-300 flex flex-col justify-start items-start ${
-                    selectedIndex === index
-                      ? "border-accent bg-accent/10 shadow-lg"
-                      : "border-accent/30 bg-card/60 hover:border-accent hover:bg-card"
-                  }`}
-                >
-                  <h3
-                    className={`font-bold text-2xl transition-colors ${
-                      selectedIndex === index
-                        ? "text-accent"
-                        : "text-foreground"
-                    }`}
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {block.title}
-                  </h3>
-
-                  <p className="leading-7 mt-4 text-foreground/70 whitespace-pre-line">
-                    {block.preview}
-                  </p>
-
-                  <span
-                    className="mt-auto pt-6 text-accent font-medium underline-offset-4 hover:underline transition-all duration-300"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {block.link}
-                  </span>
-                </motion.button>
-              ))}
-            </motion.div>
-          </motion.div>
-
+        <div className="flex flex-col gap-6">
+          {/* Expanded panel — above the cards */}
           <AnimatePresence mode="wait">
             {selectedIndex !== null && (
               <motion.div
                 key={selectedIndex}
-                layout
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 16 }}
-                transition={{ duration: 0.35 }}
-                className="w-full lg:w-2/3"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                className="w-full "
               >
-                <div className="border-2 border-accent rounded-lg bg-card p-8 min-h-96 flex flex-col">
+                <div className="border-2 border-accent  rounded-lg bg-card p-8 flex flex-col">
                   <motion.div className="flex-1 text-left">
                     <h2
                       className="text-2xl lg:text-3xl font-bold text-accent mb-6"
@@ -406,7 +439,7 @@ export default function ExpandableContentBlock() {
                       {homeBlocks[selectedIndex]?.title}
                     </h2>
 
-                    <div className="max-w-none lg:text-base leading-8 text-foreground/90 overflow-y-auto whitespace-pre-line text-left">
+                    <div className="max-w-none lg:text-base text-foreground/75 leading-8 text-foreground overflow-y-auto whitespace-pre-line text-left">
                       {homeBlocks[selectedIndex]?.content}
                     </div>
                   </motion.div>
@@ -421,6 +454,62 @@ export default function ExpandableContentBlock() {
               </motion.div>
             )}
           </AnimatePresence>
+
+          {/* Cards row */}
+          <motion.div
+            layout
+            className={`grid gap-4 ${
+              selectedIndex !== null
+                ? "grid-cols-3"
+                : "grid-cols-2 lg:grid-cols-4"
+            }`}
+            transition={{ type: "spring", stiffness: 280, damping: 28 }}
+          >
+            <AnimatePresence mode="popLayout">
+              {homeBlocks.map((block, index) => {
+                if (selectedIndex !== null && selectedIndex === index)
+                  return null;
+                return (
+                  <motion.button
+                    key={block.id}
+                    layout
+                    custom={index}
+                    variants={cardVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.95,
+                      transition: { duration: 0.2 },
+                    }}
+                    onClick={() =>
+                      setSelectedIndex(selectedIndex === index ? null : index)
+                    }
+                    className="min-h-[420px] px-6 py-6 text-left rounded-lg border-2 transition-all duration-300 flex flex-col justify-start items-start border-accent/30 bg-card/60 hover:border-accent hover:bg-card"
+                  >
+                    <h3
+                      className="font-bold text-2xl transition-colors text-accent"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {block.title}
+                    </h3>
+
+                    <p className="leading-7 mt-4 text-foreground/70">
+                      {block.preview}
+                    </p>
+
+                    <span
+                      className="mt-auto pt-6 text-accent font-medium underline-offset-4 hover:underline transition-all duration-300"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {block.link}
+                    </span>
+                  </motion.button>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface CTASectionProps {
   title: string;
@@ -13,8 +13,8 @@ interface CTASectionProps {
 export default function CTASection({
   title,
   description,
-  buttonText = 'Schedule Consultation',
-  buttonHref = '/schedule-consultation',
+  buttonText = "Schedule Consultation",
+  buttonHref = "/schedule-consultation",
 }: CTASectionProps) {
   return (
     <section className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5 border-y border-accent/30">
@@ -25,7 +25,9 @@ export default function CTASection({
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">{title}</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground/75 mb-4">
+            {title}
+          </h2>
           <p className="text-lg text-foreground/70 mb-8">{description}</p>
           <Link
             href={buttonHref}

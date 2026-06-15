@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 interface CaseStudyCardProps {
   title: string;
@@ -38,7 +38,7 @@ export default function CaseStudyCard({
         <p className="text-sm font-semibold text-foreground/60 uppercase tracking-wide mb-2">
           Challenge
         </p>
-        <p className="text-foreground/80 leading-relaxed">{challenge}</p>
+        <p className="text-foreground leading-relaxed">{challenge}</p>
       </div>
 
       {/* Outcome */}
@@ -46,23 +46,33 @@ export default function CaseStudyCard({
         <p className="text-sm font-semibold text-foreground/60 uppercase tracking-wide mb-2">
           Outcome
         </p>
-        <p className="text-foreground/80 leading-relaxed text-accent font-semibold">{outcome}</p>
+        <p className="leading-relaxed text-accent font-semibold">{outcome}</p>
       </div>
 
       {/* Metrics */}
       {metrics && (
         <div className="grid grid-cols-3 gap-4 mb-6 pt-6 border-t border-accent/20">
           <div>
-            <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">Reduction</p>
+            <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">
+              Reduction
+            </p>
             <p className="text-lg font-bold text-accent">{metrics.reduction}</p>
           </div>
           <div>
-            <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">Final Sentence</p>
-            <p className="text-lg font-bold text-foreground/90">{metrics.finalSentence}</p>
+            <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">
+              Final Sentence
+            </p>
+            <p className="text-lg font-bold text-foreground/90">
+              {metrics.finalSentence}
+            </p>
           </div>
           <div>
-            <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">Guideline</p>
-            <p className="text-xs font-semibold text-foreground/70">{metrics.guidelineRange}</p>
+            <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">
+              Guideline
+            </p>
+            <p className="text-xs font-semibold text-foreground/70">
+              {metrics.guidelineRange}
+            </p>
           </div>
         </div>
       )}

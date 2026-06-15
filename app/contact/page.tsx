@@ -16,15 +16,13 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Form */}
           <div>
-            <h2 className="text-2xl font-bold text-foreground mb-6">
-              Contact Us
-            </h2>
+            <h2 className="text-2xl font-bold text-accent mb-6">Contact Us</h2>
             <ContactForm type="contact" />
           </div>
 
           {/* Contact Info */}
           <div>
-            <h2 className="text-2xl font-bold text-foreground mb-6">
+            <h2 className="text-2xl font-bold text-accent mb-6">
               Contact Information
             </h2>
 
@@ -41,7 +39,9 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-accent mt-1" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                  <h3 className="font-semibold text-foreground/75 mb-1">
+                    Email
+                  </h3>
                   <a
                     href="mailto:daron@dnamitigation.com"
                     className="text-foreground/70 hover:text-accent transition-colors"
@@ -63,13 +63,16 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6 text-accent mt-1" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Phone</h3>
+                  <h3 className="font-semibold text-foreground/75 mb-1">
+                    Phone
+                  </h3>
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+1 3104302368"
                     className="text-foreground/70 hover:text-accent transition-colors"
                   >
-                    (123) 456-7890
+                    +1 (310) 430-2368
                   </a>
+                  .
                 </div>
               </motion.div>
 
@@ -85,7 +88,9 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-accent mt-1" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Hours</h3>
+                  <h3 className="font-semibold text-foreground/75 mb-1">
+                    Hours
+                  </h3>
                   <p className="text-foreground/70">
                     Monday - Friday: 9:00 AM - 5:00 PM EST
                   </p>

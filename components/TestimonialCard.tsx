@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
 
 interface TestimonialCardProps {
   quote: string;
@@ -9,7 +9,11 @@ interface TestimonialCardProps {
   title: string;
 }
 
-export default function TestimonialCard({ quote, author, title }: TestimonialCardProps) {
+export default function TestimonialCard({
+  quote,
+  author,
+  title,
+}: TestimonialCardProps) {
   return (
     <motion.div
       className="bg-primary/40 border border-accent/40 rounded-xl p-8 hover:border-accent/80 transition-all duration-300"
@@ -25,14 +29,14 @@ export default function TestimonialCard({ quote, author, title }: TestimonialCar
       </div>
 
       {/* Quote */}
-      <p className="text-foreground/90 text-lg leading-relaxed mb-6 italic">
+      <p className="text-foreground/75 text-lg leading-relaxed mb-6 italic">
         &quot;{quote}&quot;
       </p>
 
       {/* Author Info */}
       <div className="border-t border-accent/20 pt-4">
         <p className="text-accent font-semibold text-sm">{author}</p>
-        <p className="text-foreground/60 text-xs">{title}</p>
+        <p className="text-foreground/75 text-xs">{title}</p>
       </div>
     </motion.div>
   );

@@ -38,7 +38,7 @@ export default function TestimonialsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl lg:text-5xl font-bold text-accent">
+            <h1 className="text-5xl lg:text-5xl font-bold text-accent">
               Testimonials
             </h1>
           </motion.div>

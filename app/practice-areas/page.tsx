@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { practiceAreas } from '@/lib/data/practiceAreas';
-import { ArrowRight } from 'lucide-react';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { practiceAreas } from "@/lib/data/practiceAreas";
+import { ArrowRight } from "lucide-react";
 
 export default function PracticeAreasPage() {
   const containerVariants = {
@@ -24,7 +24,7 @@ export default function PracticeAreasPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: 'easeOut' },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
 
@@ -33,30 +33,33 @@ export default function PracticeAreasPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-20 px-4 sm:px-6 lg:px-8 py-16 lg:py-20 bg-gradient-to-b from-primary to-primary/95 border-b border-accent/30">
+      <section className="pt-40 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary to-primary/95">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">Practice Areas</h1>
-            <p className="text-lg text-foreground/80">
-              Specialized federal sentencing advocacy across all key practice areas
+            <h1 className="text-5xl lg:text-5xl font-bold text-accent mb-4">
+              Practice Areas
+            </h1>
+            <p className="text-lg text-foreground/75">
+              Specialized federal sentencing advocacy across all key practice
+              areas
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Practice Areas Grid */}
-      <section className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-10  px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: "-100px" }}
           >
             {practiceAreas.map((area) => (
               <motion.div key={area.id} variants={itemVariants}>
@@ -69,7 +72,11 @@ export default function PracticeAreasPage() {
                       {area.shortDescription}
                     </p>
                     <div className="flex items-center gap-2 text-accent text-sm font-semibold">
-                      Learn More <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      Learn More{" "}
+                      <ArrowRight
+                        size={16}
+                        className="group-hover:translate-x-1 transition-transform"
+                      />
                     </div>
                   </div>
                 </Link>
@@ -78,8 +85,6 @@ export default function PracticeAreasPage() {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

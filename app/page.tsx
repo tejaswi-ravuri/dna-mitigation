@@ -83,7 +83,7 @@ Our work is built around one objective: shaping institutional perception before 
               className="max-w-3xl"
             >
               <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                className="text-5xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
                 style={{ fontFamily: "Cormorant Garamond" }}
               >
                 Mitigation Videos Built Early,
@@ -91,10 +91,11 @@ Our work is built around one objective: shaping institutional perception before 
                 <br /> Defines Your Client
               </h1>
               <p className="text-lg md:text-xl text-white mb-8 leading-relaxed">
-                Pre-PSR video advocacy designed to shape how{" "}
+                Pre-PSR video advocacy designed to shape how <br />
                 <span className="text-gold-metallic font-bold">
                   probation, prosecutors, and the judge
                 </span>{" "}
+                <br />
                 understand your client before sentencing narratives harden.
               </p>
               <motion.div
@@ -168,14 +169,13 @@ Our work is built around one objective: shaping institutional perception before 
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground/75 mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Ready to Shape Your Client&apos;s Narrative?
+              Reserve a 32-Minute Mitigation Strategy Session
             </h2>
-            <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
-              Schedule a confidential consultation to discuss how early
-              mitigation strategy can impact sentencing outcomes.
+            <p className="text-lg text-foreground mb-8 leading-relaxed">
+              What if court met the person before reading the file?
             </p>
             <Link
               href="/schedule-consultation"
