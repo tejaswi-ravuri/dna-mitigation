@@ -160,7 +160,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Contact Info */}
             <div>
               <h4
                 className="text-accent font-semibold mb-4 text-sm"
