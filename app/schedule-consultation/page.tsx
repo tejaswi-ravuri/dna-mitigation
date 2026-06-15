@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -44,7 +44,6 @@ function getTagline(from: string | null): { headline: string; sub: string } {
       sub: "Medical records document the injury. Video reveals the life it changed.",
     };
   }
-  // Default (home, criminal practices, or unknown)
   return {
     headline: "Reserve a 32-Minute Mitigation Strategy Session",
     sub: "What if court met the person before reading the file?",
@@ -95,15 +94,9 @@ function slotAllZones(slot: string): { PT: string; CT: string; ET: string } {
   const end = parseTime(endStr);
   const start24 = to24Hour(start.hour, start.minute, start.ampm);
   const end24 = to24Hour(end.hour, end.minute, end.ampm);
-
   const makeRange = (offset: number) =>
     `${formatHour(start24, start.minute, offset)} – ${formatHour(end24, end.minute, offset)}`;
-
-  return {
-    PT: makeRange(0),
-    CT: makeRange(2),
-    ET: makeRange(3),
-  };
+  return { PT: makeRange(0), CT: makeRange(2), ET: makeRange(3) };
 }
 
 // ─── Calendar Helpers ─────────────────────────────────────────────────────────
@@ -165,9 +158,9 @@ const INJURY_CASES = [
   "Other Catastrophic Injury",
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Inner component that uses useSearchParams ────────────────────────────────
 
-export default function BookConsultation() {
+function BookConsultationInner() {
   const today = new Date();
   const searchParams = useSearchParams();
   const from = searchParams.get("from");
@@ -186,7 +179,6 @@ export default function BookConsultation() {
     caseType: "",
     notes: "",
   });
-
   const [bookedSlots, setBookedSlots] = useState<string[]>([]);
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -280,8 +272,6 @@ export default function BookConsultation() {
     }
   };
 
-  // ─── Shared styles ────────────────────────────────────────────────────────
-
   const inputCls =
     "w-full border border-accent/20 bg-white/[0.03] px-3.5 py-[11px] text-[13px] text-white/85 outline-none transition-colors duration-150 focus:border-accent placeholder:text-white/20";
   const labelCls =
@@ -291,37 +281,11 @@ export default function BookConsultation() {
   const btnOutline =
     "inline-block bg-transparent text-accent text-[11px] font-semibold tracking-[2px] uppercase px-7 py-3 border border-accent/40 cursor-pointer transition-colors duration-150 hover:bg-accent/[0.08] no-underline";
 
-  // ─────────────────────────────────────────────────────────────────────────
-
   return (
     <>
       <Navbar />
-
-      {/* ── Page header — dynamic tagline ── */}
-      {/* <section className="bg-background pt-40">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-6"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              {tagline.headline}
-            </h2>
-            <p className="text-lg text-foreground mb-8 leading-relaxed">
-              {tagline.sub}
-            </p>
-          </motion.div>
-        </div>
-      </section> */}
-
       <section className="min-h-screen pt-40 pb-20 bg-[#0A0A0A] px-6">
         <div className="mx-auto max-w-[1000px]">
-          {/* ── Progress bar ── */}
           {!booked && (
             <motion.div
               initial={{ opacity: 0, y: -16 }}
@@ -335,27 +299,19 @@ export default function BookConsultation() {
                     <div className="flex flex-col items-center gap-2">
                       <div
                         className={`w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-bold transition-all
-                      ${
-                        step > i + 1
-                          ? "bg-accent text-[#0A0A0A] border-none"
-                          : step === i + 1
-                            ? "bg-accent/15 text-accent border border-accent"
-                            : "bg-transparent text-white/30 border border-white/15"
-                      }`}
+                      ${step > i + 1 ? "bg-accent text-[#0A0A0A] border-none" : step === i + 1 ? "bg-accent/15 text-accent border border-accent" : "bg-transparent text-white/30 border border-white/15"}`}
                       >
                         {step > i + 1 ? "✓" : i + 1}
                       </div>
                       <span
-                        className={`text-[10px] tracking-[0.08em] uppercase whitespace-nowrap
-                      ${step === i + 1 ? "text-accent" : "text-white/30"}`}
+                        className={`text-[10px] tracking-[0.08em] uppercase whitespace-nowrap ${step === i + 1 ? "text-accent" : "text-white/30"}`}
                       >
                         {label}
                       </span>
                     </div>
                     {i < 2 && (
                       <div
-                        className={`w-20 h-px mx-2 mb-6 transition-colors
-                      ${step > i + 1 ? "bg-accent" : "bg-accent/20"}`}
+                        className={`w-20 h-px mx-2 mb-6 transition-colors ${step > i + 1 ? "bg-accent" : "bg-accent/20"}`}
                       />
                     )}
                   </div>
@@ -364,7 +320,6 @@ export default function BookConsultation() {
             </motion.div>
           )}
 
-          {/* ════════════ BOOKED CONFIRMATION ════════════ */}
           {booked ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.97 }}
@@ -407,7 +362,6 @@ export default function BookConsultation() {
               </Link>
             </motion.div>
           ) : step === 1 ? (
-            /* ════════════ STEP 1 — Date & Time ════════════ */
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -415,13 +369,11 @@ export default function BookConsultation() {
               className="bg-white/[0.03] border border-accent/20 p-12"
             >
               <div className="grid grid-cols-2 gap-12">
-                {/* Calendar */}
                 <div>
                   <h3 className="text-[26px] font-semibold text-white mb-6">
                     Select a Date
                   </h3>
                   <div className="border border-accent/20 p-6">
-                    {/* Month nav */}
                     <div className="flex items-center justify-between mb-5">
                       <button
                         onClick={prevMonth}
@@ -439,8 +391,6 @@ export default function BookConsultation() {
                         ›
                       </button>
                     </div>
-
-                    {/* Day headers */}
                     <div className="grid grid-cols-7 gap-1 mb-2">
                       {DAYS.map((d) => (
                         <div
@@ -451,8 +401,6 @@ export default function BookConsultation() {
                         </div>
                       ))}
                     </div>
-
-                    {/* Date cells */}
                     <div className="grid grid-cols-7 gap-1">
                       {calDays.map((day, idx) => (
                         <button
@@ -478,14 +426,10 @@ export default function BookConsultation() {
                       ))}
                     </div>
                   </div>
-
-                  {/* Timezone note */}
                   <p className="text-[11px] tracking-[0.05em] text-white/30 mt-3">
                     * Weekends unavailable. Select your preferred time zone
                     below — all slots shown in PT, CT, and ET.
                   </p>
-
-                  {/* Tagline injected here for criminal/injury context */}
                   <div className="mt-5 pt-5 border-t border-white/[0.06]">
                     <p className="text-[13px] font-semibold text-accent leading-snug">
                       {tagline.headline}
@@ -496,13 +440,10 @@ export default function BookConsultation() {
                   </div>
                 </div>
 
-                {/* Time slots */}
                 <div>
                   <h3 className="text-[26px] font-semibold text-white mb-2">
                     Select a Time
                   </h3>
-
-                  {/* Timezone legend */}
                   <div className="flex items-center gap-3 mb-5">
                     {(
                       ["PT — Pacific", "CT — Central", "ET — Eastern"] as const
@@ -515,7 +456,6 @@ export default function BookConsultation() {
                       </span>
                     ))}
                   </div>
-
                   {!selectedDay ? (
                     <div className="h-[200px] flex items-center justify-center border border-dashed border-accent/20 text-[13px] text-white/25">
                       Please select a date first
@@ -532,7 +472,6 @@ export default function BookConsultation() {
                         const taken = bookedSlots.includes(slot);
                         const active = selectedTime === slot;
                         const zones = slotAllZones(slot);
-
                         return (
                           <button
                             key={slot}
@@ -547,7 +486,6 @@ export default function BookConsultation() {
                                     : "border-accent/20 bg-white/[0.02] cursor-pointer hover:border-accent/50 hover:bg-accent/[0.06]"
                               }`}
                           >
-                            {/* PT — primary */}
                             <div className="flex items-center justify-between mb-2.5">
                               <span
                                 className={`text-[15px] font-bold tracking-wide ${active ? "text-accent" : taken ? "text-white/25 line-through" : "text-white/90"}`}
@@ -560,12 +498,9 @@ export default function BookConsultation() {
                                 Pacific Time
                               </span>
                             </div>
-
                             <div
                               className={`w-full h-px mb-2.5 ${active ? "bg-accent/20" : "bg-white/[0.05]"}`}
                             />
-
-                            {/* CT / ET — secondary */}
                             <div className="grid grid-cols-2 gap-4">
                               {(
                                 [
@@ -587,7 +522,6 @@ export default function BookConsultation() {
                                 </div>
                               ))}
                             </div>
-
                             {taken && (
                               <div className="mt-2 text-[10px] tracking-[0.08em] uppercase text-white/25">
                                 Unavailable
@@ -598,8 +532,6 @@ export default function BookConsultation() {
                       })}
                     </div>
                   )}
-
-                  {/* Selected appointment summary */}
                   {selectedDay &&
                     selectedTime &&
                     (() => {
@@ -653,7 +585,6 @@ export default function BookConsultation() {
                     })()}
                 </div>
               </div>
-
               <div className="mt-10 flex justify-end">
                 <button
                   disabled={!selectedDay || !selectedTime}
@@ -665,7 +596,6 @@ export default function BookConsultation() {
               </div>
             </motion.div>
           ) : step === 2 ? (
-            /* ════════════ STEP 2 — Your Information ════════════ */
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -690,7 +620,6 @@ export default function BookConsultation() {
                     </p>
                   );
                 })()}
-
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -748,8 +677,6 @@ export default function BookConsultation() {
                     />
                   </div>
                 </div>
-
-                {/* Case type — grouped */}
                 <div>
                   <label className={labelCls}>Case Type</label>
                   <select
@@ -784,7 +711,6 @@ export default function BookConsultation() {
                     </optgroup>
                   </select>
                 </div>
-
                 <div>
                   <label className={labelCls}>Brief Case Notes</label>
                   <textarea
@@ -798,7 +724,6 @@ export default function BookConsultation() {
                     style={{ resize: "vertical" }}
                   />
                 </div>
-
                 <div className="flex justify-between mt-2">
                   <button
                     type="button"
@@ -814,7 +739,6 @@ export default function BookConsultation() {
               </form>
             </motion.div>
           ) : (
-            /* ════════════ STEP 3 — Confirm ════════════ */
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -827,15 +751,12 @@ export default function BookConsultation() {
               <p className="text-[12.5px] text-white/40 mb-10">
                 Review your appointment details below.
               </p>
-
               {submitError && (
                 <div className="bg-red-900/20 border border-red-300/30 px-4 py-3.5 text-[12.5px] text-red-300 mb-6 leading-relaxed">
                   {submitError}
                 </div>
               )}
-
               <div className="grid grid-cols-2 gap-6 mb-10">
-                {/* Date & time — full width */}
                 <div className="col-span-2 border-b border-white/[0.06] pb-4">
                   <div className="text-[10px] tracking-[0.1em] uppercase text-white/30 mb-2">
                     Date & Time
@@ -875,7 +796,6 @@ export default function BookConsultation() {
                       );
                     })()}
                 </div>
-
                 {[
                   { label: "Duration", val: "32-minute strategy consultation" },
                   { label: "Name", val: form.name },
@@ -897,7 +817,6 @@ export default function BookConsultation() {
                   </div>
                 ))}
               </div>
-
               <div className="bg-accent/[0.04] border border-accent/15 p-6 mb-8">
                 <p className="text-[12px] text-white/45 leading-relaxed">
                   <strong className="text-white/65">Note:</strong> This is a
@@ -905,7 +824,6 @@ export default function BookConsultation() {
                   reach out to confirm your appointment within 24 hours.
                 </p>
               </div>
-
               <div className="flex justify-between items-center">
                 <button
                   onClick={() => {
@@ -929,5 +847,15 @@ export default function BookConsultation() {
         </div>
       </section>
     </>
+  );
+}
+
+// ─── Outer export wrapped in Suspense ────────────────────────────────────────
+
+export default function BookConsultation() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
+      <BookConsultationInner />
+    </Suspense>
   );
 }
