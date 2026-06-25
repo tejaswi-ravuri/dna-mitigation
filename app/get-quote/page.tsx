@@ -301,7 +301,7 @@ export default function PaymentPage() {
           </p>
           <div className="pt-2">
             <a
-              href="/contact"
+              href="/select-service"
               className="inline-flex items-center justify-center px-8 py-3 bg-gold-metallic text-[#0a0a0a] rounded font-semibold text-sm tracking-widest uppercase hover:bg-[#b8963e] transition-colors"
             >
               Request Quote

@@ -39,7 +39,7 @@ export default function AboutPage() {
               </em>
             </p>
             <br />
-            <em className="font-bold text-2xl text-white">
+            <em className="font-bold text-white">
               They come to us because they have already seen the precedent.
             </em>
           </section>
@@ -299,7 +299,7 @@ export default function AboutPage() {
             {[
               { value: "30+", label: "Federal Mitigation Matters" },
               { value: "180+", label: "Years Guideline Exposure Avoided" },
-              { value: "344+", label: "Testimonial Letters Submitted" },
+              { value: "1300+", label: "Testimonial Letters Submitted" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.value}

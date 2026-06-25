@@ -1,59 +1,68 @@
-import { validateEmail, validatePhone, sendEmail, successResponse, errorResponse } from '@/lib/api-utils';
+// app/api/contact/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import {
+  sendContactClientConfirmation,
+  sendContactAdminAlert,
+} from "@/lib/mailer";
 
-export async function POST(request: Request) {
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_REGEX = /^[\d\s\-\+\(\)]+$/;
+
+export async function POST(req: NextRequest) {
   try {
-    const body = await request.json();
+    const body = await req.json();
     const { name, email, phone, firm, message } = body;
 
-    // Validation
-    if (!name || !email || !phone || !message) {
-      return errorResponse('Missing required fields', 400);
+    if (!name?.trim() || !email?.trim() || !phone?.trim() || !message?.trim()) {
+      return NextResponse.json(
+        { error: "Missing required fields: name, email, phone, message" },
+        { status: 400 },
+      );
     }
 
-    if (!validateEmail(email)) {
-      return errorResponse('Invalid email address', 400);
+    if (!EMAIL_REGEX.test(email.trim())) {
+      return NextResponse.json(
+        { error: "Invalid email address" },
+        { status: 400 },
+      );
     }
 
-    if (!validatePhone(phone)) {
-      return errorResponse('Invalid phone number', 400);
+    if (
+      !PHONE_REGEX.test(phone.trim()) ||
+      phone.replace(/\D/g, "").length < 10
+    ) {
+      return NextResponse.json(
+        { error: "Invalid phone number" },
+        { status: 400 },
+      );
     }
 
-    // Send confirmation email to client
-    const clientEmailHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #d4af37;">Contact Confirmation</h2>
-        <p>Dear ${name},</p>
-        <p>Thank you for reaching out to DNA Mitigation. We have received your inquiry and will review it carefully.</p>
-        
-        <div style="background-color: #1a1a1a; border-left: 4px solid #d4af37; padding: 20px; margin: 20px 0;">
-          <p><strong>Your Information:</strong></p>
-          <p>Name: ${name}</p>
-          <p>Email: ${email}</p>
-          <p>Phone: ${phone}</p>
-          ${firm ? `<p>Firm: ${firm}</p>` : ''}
-          <p>Message: ${message}</p>
-        </div>
+    const contactDetails = {
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      firm: firm?.trim() || undefined,
+      message: message.trim(),
+    };
 
-        <p>We aim to respond to all inquiries within 24 business hours. If your matter is urgent, please call us directly.</p>
-        
-        <p>Best regards,<br/>DNA Mitigation Team</p>
-      </div>
-    `;
+    // Send both emails concurrently — don't block response on email failure
+    await Promise.all([
+      sendContactClientConfirmation(contactDetails),
+      sendContactAdminAlert(contactDetails),
+    ]);
 
-    // Send notification email to admin (optional - you can configure your email)
-    // This demonstrates the flow but won't actually send without SMTP configured
-
-    await sendEmail(email, 'DNA Mitigation - Contact Confirmation', clientEmailHtml);
-
-    return successResponse(
+    return NextResponse.json(
       {
-        message: 'Your contact form has been submitted successfully',
-        submittedAt: new Date().toISOString(),
+        success: true,
+        message: "Your message has been sent. We'll be in touch within 24 business hours.",
       },
-      201
+      { status: 201 },
     );
   } catch (error) {
-    console.error('Contact API error:', error);
-    return errorResponse('Internal server error', 500);
+    console.error("[POST /api/contact]", error);
+    return NextResponse.json(
+      { error: "Internal server error. Please try again." },
+      { status: 500 },
+    );
   }
 }
