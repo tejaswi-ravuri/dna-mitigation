@@ -40,7 +40,7 @@ export default function PracticeAreasPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl lg:text-5xl font-bold text-accent mb-4">
+            <h1 className="text-4xl lg:text-5xl font-bold text-accent mb-4">
               Practice Areas
             </h1>
             <p className="text-lg text-foreground/75">

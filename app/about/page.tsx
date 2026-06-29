@@ -20,7 +20,7 @@ export default function AboutPage() {
           className="space-y-12"
         >
           <section className="text-foreground/75">
-            <h1 className="text-4xl font-bold text-accent mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-accent mb-6">
               About DNA Mitigation
             </h1>
             <p className="lg:text-lg">

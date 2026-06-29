@@ -44,7 +44,7 @@ export default function CaseStudiesPage() {
               Case Results
             </h1>
 
-            <p className="text-accent lg:text-lg lg:text-xl font-medium mb-3">
+            <p className="text-accent lg:text-xl font-medium mb-3">
               REPRESENTATIVE FEDERAL MITIGATION OUTCOMES
             </p>
 

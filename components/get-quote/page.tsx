@@ -179,7 +179,7 @@ function FeesSection({
           }}
         />
         <div className="z-10 flex flex-col justify-center flex-1 px-8 lg:px-16 max-w-2xl mt-16">
-          <h1 className="text-5xl lg:text-5xl font-bold text-accent">
+          <h1 className="text-4xl lg:text-5xl font-bold text-accent">
             Service Fees
           </h1>
           <div

@@ -50,14 +50,14 @@ export default function PracticeAreaTemplate({
     <div className="min-h-screen bg-primary">
       <div className="max-w-5xl mx-auto px-4 sm:px-8">
         {/* Title + Description */}
-        <section className="py-6 lg:pt-20">
+        <section className="py-6 pt-32 lg:pt-40">
           <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-4xl lg:text-5xl font-bold text-accent mb-4  pt-[100px] sm:pt-32">
+              <h1 className="text-4xl lg:text-5xl font-bold text-accent mb-4">
                 {title}
               </h1>
               <p className="text-lg text-accent">{description}</p>
