@@ -22,7 +22,7 @@ const INJURY_PAGES = [
 
 // Shared pages that inherit tagline from previous page
 const SHARED_PAGES = [
-  "/case-studies",
+  "/case-results",
   "/testimonials",
   "/contact",
   "/pay-online",
@@ -127,7 +127,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/case-studies"
+                    href="/case-results"
                     className="text-foreground/70 hover:text-accent transition-colors"
                   >
                     Case Results
@@ -149,14 +149,14 @@ export default function Footer() {
                     Contact Us
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="/get-quote"
                     className="text-foreground/70 hover:text-accent transition-colors"
                   >
                     Get Quote
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
 

@@ -417,100 +417,98 @@ export default function ExpandableContentBlock() {
 
   return (
     <div className="w-full">
-      <div className="hidden md:block">
-        <div className="flex flex-col gap-6">
-          {/* Expanded panel — above the cards */}
-          <AnimatePresence mode="wait">
-            {selectedIndex !== null && (
-              <motion.div
-                key={selectedIndex}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                className="w-full "
-              >
-                <div className="border-2 border-accent  rounded-lg bg-card p-8 flex flex-col">
-                  <motion.div className="flex-1 text-left">
-                    <h2
-                      className="text-2xl lg:text-3xl font-bold text-accent mb-6"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {homeBlocks[selectedIndex]?.title}
-                    </h2>
-
-                    <div className="max-w-none lg:text-base text-foreground/75 leading-8 text-foreground overflow-y-auto whitespace-pre-line text-left">
-                      {homeBlocks[selectedIndex]?.content}
-                    </div>
-                  </motion.div>
-
-                  <button
-                    onClick={() => setSelectedIndex(null)}
-                    className="mt-8 px-4 py-2 bg-accent text-primary rounded font-semibold hover:bg-accent/90 transition-colors self-start"
+      <div className="flex flex-col gap-6">
+        {/* Expanded panel — above the cards */}
+        <AnimatePresence mode="wait">
+          {selectedIndex !== null && (
+            <motion.div
+              key={selectedIndex}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+              className="w-full "
+            >
+              <div className="border-2 border-accent  rounded-lg bg-card p-8 flex flex-col">
+                <motion.div className="flex-1 text-left">
+                  <h2
+                    className="text-2xl lg:text-3xl font-bold text-accent mb-6"
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
-                    Close
-                  </button>
-                </div>
-              </motion.div>
-            )}
+                    {homeBlocks[selectedIndex]?.title}
+                  </h2>
+
+                  <div className="max-w-none lg:text-base text-foreground/75 leading-8 text-foreground overflow-y-auto whitespace-pre-line text-left">
+                    {homeBlocks[selectedIndex]?.content}
+                  </div>
+                </motion.div>
+
+                <button
+                  onClick={() => setSelectedIndex(null)}
+                  className="mt-8 px-4 py-2 bg-accent text-primary rounded font-semibold hover:bg-accent/90 transition-colors self-start"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Cards row */}
+        <motion.div
+          layout
+          className={`grid gap-4 ${
+            selectedIndex !== null
+              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+          }`}
+          transition={{ type: "spring", stiffness: 280, damping: 28 }}
+        >
+          <AnimatePresence mode="popLayout">
+            {homeBlocks.map((block, index) => {
+              if (selectedIndex !== null && selectedIndex === index)
+                return null;
+              return (
+                <motion.button
+                  key={block.id}
+                  layout
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.95,
+                    transition: { duration: 0.2 },
+                  }}
+                  onClick={() =>
+                    setSelectedIndex(selectedIndex === index ? null : index)
+                  }
+                  className="min-h-[420px] px-6 py-6 text-left rounded-lg border-2 transition-all duration-300 flex flex-col justify-start items-start border-accent/30 bg-card/60 hover:border-accent hover:bg-card"
+                >
+                  <h3
+                    className="font-bold text-2xl transition-colors text-accent"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {block.title}
+                  </h3>
+
+                  <p className="leading-7 mt-4 text-foreground/70">
+                    {block.preview}
+                  </p>
+
+                  <span
+                    className="mt-auto pt-6 text-accent font-medium underline-offset-4 hover:underline transition-all duration-300"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {block.link}
+                  </span>
+                </motion.button>
+              );
+            })}
           </AnimatePresence>
-
-          {/* Cards row */}
-          <motion.div
-            layout
-            className={`grid gap-4 ${
-              selectedIndex !== null
-                ? "grid-cols-3"
-                : "grid-cols-2 lg:grid-cols-4"
-            }`}
-            transition={{ type: "spring", stiffness: 280, damping: 28 }}
-          >
-            <AnimatePresence mode="popLayout">
-              {homeBlocks.map((block, index) => {
-                if (selectedIndex !== null && selectedIndex === index)
-                  return null;
-                return (
-                  <motion.button
-                    key={block.id}
-                    layout
-                    custom={index}
-                    variants={cardVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0.95,
-                      transition: { duration: 0.2 },
-                    }}
-                    onClick={() =>
-                      setSelectedIndex(selectedIndex === index ? null : index)
-                    }
-                    className="min-h-[420px] px-6 py-6 text-left rounded-lg border-2 transition-all duration-300 flex flex-col justify-start items-start border-accent/30 bg-card/60 hover:border-accent hover:bg-card"
-                  >
-                    <h3
-                      className="font-bold text-2xl transition-colors text-accent"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {block.title}
-                    </h3>
-
-                    <p className="leading-7 mt-4 text-foreground/70">
-                      {block.preview}
-                    </p>
-
-                    <span
-                      className="mt-auto pt-6 text-accent font-medium underline-offset-4 hover:underline transition-all duration-300"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {block.link}
-                    </span>
-                  </motion.button>
-                );
-              })}
-            </AnimatePresence>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

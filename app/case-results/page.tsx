@@ -12,7 +12,7 @@ function RichText({ html, className }: { html: string; className?: string }) {
         {paragraphs.map((p, i) => (
           <p
             key={i}
-            className="text-foreground/75 leading-relaxed text-lg [&_strong]:text-foreground [&_strong]:font-semibold"
+            className="text-foreground/75 leading-relaxed lg:text-lg [&_strong]:text-foreground [&_strong]:font-semibold"
             dangerouslySetInnerHTML={{ __html: p }}
           />
         ))}
@@ -21,7 +21,7 @@ function RichText({ html, className }: { html: string; className?: string }) {
   }
   return (
     <p
-      className={`text-foreground/75 leading-relaxed text-lg [&_strong]:text-foreground [&_strong]:font-semibold ${className ?? ""}`}
+      className={`text-foreground/75 leading-relaxed lg:text-lg [&_strong]:text-foreground [&_strong]:font-semibold ${className ?? ""}`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
@@ -33,26 +33,26 @@ export default function CaseStudiesPage() {
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className="px-4 sm:px-6 lg:px-8 lg:pt-40">
+      <section className="px-4 sm:px-8 pt-32 sm:pt-36 lg:px-8 lg:pt-40">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl font-bold text-accent mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-accent mb-6">
               Case Results
             </h1>
 
-            <p className="text-accent text-xl font-medium mb-3">
+            <p className="text-accent lg:text-lg lg:text-xl font-medium mb-3">
               REPRESENTATIVE FEDERAL MITIGATION OUTCOMES
             </p>
 
-            <p className="font-semibold text-lg text-foreground/75">
+            <p className="font-semibold lg:text-lg text-foreground/75">
               Sentencing · Compassionate Release · Post-Conviction Advocacy
             </p>
 
-            <p className="text-foreground/75 mt-8 max-w-4xl leading-relaxed">
+            <p className="text-foreground/75 mt-8 lg:text-lg max-w-4xl leading-relaxed">
               These presentations were developed to help courts see{" "}
               <strong className="text-foreground font-semibold">
                 the human being before sentencing was reduced to guideline
@@ -110,7 +110,7 @@ export default function CaseStudiesPage() {
 
               {/* Problem */}
               <div className="mb-10">
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">
                   THE PROBLEM
                 </h3>
                 <RichText html={item.problem} />
@@ -118,7 +118,7 @@ export default function CaseStudiesPage() {
 
               {/* Strategy */}
               <div className="mb-10">
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">
                   MITIGATION STRATEGY
                 </h3>
                 <RichText html={item.strategy} />
@@ -127,10 +127,10 @@ export default function CaseStudiesPage() {
               {/* Judicial Impact */}
               {item.quote && (
                 <div className="mb-10">
-                  <h3 className="text-xl font-semibold text-white mb-4">
+                  <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">
                     JUDICIAL IMPACT
                   </h3>
-                  <blockquote className="border-l-4 border-accent pl-6 italic text-xl text-foreground/75 leading-relaxed">
+                  <blockquote className="border-l-4 border-accent pl-6 italic text-lg lg:text-xl text-foreground/75 leading-relaxed">
                     "{item.quote}" —{" "}
                     <strong className="not-italic text-foreground font-semibold">
                       {item.quoteName}
@@ -141,7 +141,7 @@ export default function CaseStudiesPage() {
 
               {/* Outcome */}
               <div className="mb-10">
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">
                   OUTCOME
                 </h3>
                 <RichText html={item.outcome} />
@@ -150,7 +150,7 @@ export default function CaseStudiesPage() {
               {/* Coverage */}
               {item.coverage && (
                 <div className="mb-10">
-                  <h3 className="text-xl font-semibold text-white mb-4">
+                  <h3 className="text-lg lg:text-xl font-semibold text-white mb-4">
                     Related Coverage
                   </h3>
                   <div className="flex flex-col gap-3">

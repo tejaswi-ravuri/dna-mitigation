@@ -11,7 +11,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Content */}
-      <div className="max-w-5xl mx-auto sm:px-6 lg:px-8  py-16 lg:py-40">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,10 +20,10 @@ export default function AboutPage() {
           className="space-y-12"
         >
           <section className="text-foreground/75">
-            <h1 className="text-5xl font-bold text-accent mb-6">
+            <h1 className="text-4xl font-bold text-accent mb-6">
               About DNA Mitigation
             </h1>
-            <p className="text-lg">
+            <p className="lg:text-lg">
               We help judges, prosecutors, and probation officers understand{" "}
               <em className="font-bold text-white">
                 the human being behind the conduct, not simply the worst moment
@@ -44,11 +44,11 @@ export default function AboutPage() {
             </em>
           </section>
           <section>
-            <h2 className="text-3xl font-bold text-accent mb-6">
+            <h2 className="text-2xl lg:text-3xl font-bold text-accent mb-6">
               Built Inside Federal Mitigation
             </h2>
 
-            <p className="text-foreground/75 leading-relaxed text-lg">
+            <p className="text-foreground/75 leading-relaxed lg:text-lg">
               DNA Mitigation was founded by Daron L. Keet, who spent years
               directing national television campaigns for brands including
               Google, Subaru, Toyota, and American Airlines before bringing
@@ -81,11 +81,11 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold text-accent mb-6">
+            <h2 className="text-2xl lg:text-3xl font-bold text-accent mb-6">
               We Enter Before Perceptions Harden
             </h2>
 
-            <p className="text-foreground/75 leading-relaxed text-lg">
+            <p className="text-foreground/75 leading-relaxed lg:text-lg">
               Legal defense and human understanding are different disciplines.
               <br />
               <br />
@@ -150,11 +150,11 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold text-accent mb-6">
+            <h2 className="text-2xl lg:text-3xl font-bold text-accent mb-6">
               A Strategic Advantage Counsel Controls
             </h2>
 
-            <p className="text-foreground/75 leading-relaxed text-lg">
+            <p className="text-foreground/75 leading-relaxed lg:text-lg">
               Unlike live testimony, mitigation video cannot be cross-examined.
               <br />
               <br />
@@ -182,11 +182,11 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold text-accent mb-6">
+            <h2 className="text-2xl lg:text-3xl font-bold text-accent mb-6">
               The Footage Counsel Almost Rejected
             </h2>
 
-            <p className="text-foreground/75 leading-relaxed text-lg">
+            <p className="text-foreground/75 leading-relaxed lg:text-lg">
               In the early years of federal sentencing mitigation, presentations
               traditionally relied on testimony from family members, clergy,
               psychologists, and community figures. A defendant’s own voice was
@@ -213,7 +213,7 @@ export default function AboutPage() {
               footage.”
             </blockquote>
 
-            <p className="text-foreground/75 leading-relaxed text-lg">
+            <p className="text-foreground/75 leading-relaxed lg:text-lg">
               Once they reviewed it,{" "}
               <em className="font-bold text-white">
                 {" "}
@@ -261,7 +261,7 @@ export default function AboutPage() {
             </blockquote>
             <img src="/about2.png" alt="Client chat" className="w-xs" />
             <br />
-            <p className="text-foreground/75 leading-relaxed text-lg">
+            <p className="text-foreground/75 leading-relaxed lg:text-lg">
               That case helped shape what has since become central to our
               practice:
               <br />
@@ -275,9 +275,11 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold text-accent mb-6">The Record</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-accent mb-6">
+              The Record
+            </h2>
 
-            <p className="text-foreground/75 leading-relaxed text-lg">
+            <p className="text-foreground/75 leading-relaxed lg:text-lg">
               Across more than thirty federal sentencing matters, our work has
               contributed to outcomes substantially below guideline
               expectations, including{" "}

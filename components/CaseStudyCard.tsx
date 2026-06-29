@@ -79,7 +79,7 @@ export default function CaseStudyCard({
 
       {/* Link */}
       <Link
-        href="/case-studies"
+        href="/case-results"
         className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors text-sm font-semibold mt-auto"
       >
         View Case Studies <ArrowRight size={16} />

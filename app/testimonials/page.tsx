@@ -31,14 +31,14 @@ export default function TestimonialsPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className=" px-4 sm:px-6 lg:px-8 lg:pt-40">
+      <section className=" px-4 sm:px-6 lg:px-8 pt-32 lg:pt-40">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl lg:text-5xl font-bold text-accent">
+            <h1 className="text-5xl lg:text-5xl  font-bold text-accent">
               Testimonials
             </h1>
           </motion.div>

@@ -1,18 +1,85 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-primary">
+    <main className="min-h-screen bg-primary relative overflow-hidden">
       <Navbar />
 
+      {/* Background image — sibling to content, not nested inside it */}
+      <div
+        className="lg:absolute hidden lg:block inset-0 pointer-events-none"
+        aria-hidden="true"
+      >
+        {/* Image sits on the right 60% only */}
+        <div className="absolute top-0 right-0 w-[60%] h-full">
+          <Image
+            src="/payonlineBg.jpeg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+
+        {/* Horizontal blend — wide soft fade from left into image */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, var(--background) 0%, var(--background) 35%, color-mix(in srgb, var(--background) 70%, transparent) 50%, color-mix(in srgb, var(--background) 30%, transparent) 65%, transparent 80%)",
+          }}
+        />
+
+        {/* Top fade */}
+        <div
+          className="absolute inset-x-0 top-0 h-64"
+          style={{
+            background: `
+      linear-gradient(
+        to bottom,
+        var(--background) 0%,
+        var(--background) 20%,
+        color-mix(in srgb, var(--background) 90%, transparent) 35%,
+        color-mix(in srgb, var(--background) 70%, transparent) 50%,
+        color-mix(in srgb, var(--background) 45%, transparent) 70%,
+        color-mix(in srgb, var(--background) 20%, transparent) 85%,
+        transparent 100%
+      )
+    `,
+          }}
+        />
+
+        {/* Bottom fade */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-full"
+          style={{
+            background: `
+      linear-gradient(
+        to top,
+        var(--background) 0%,
+        var(--background) 20%,
+         var(--background) 0%,
+        var(--background) 20%,
+        color-mix(in srgb, var(--background) 20%, transparent) 85%,
+        color-mix(in srgb, var(--background) 45%, transparent) 70%,
+        color-mix(in srgb, var(--background) 70%, transparent) 50%,
+        color-mix(in srgb, var(--background) 90%, transparent) 35%,
+        transparent 100%
+      )
+    `,
+          }}
+        />
+      </div>
+
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-40">
+      <div className="relative z-10 max-w-3xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:py-40">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Form */}
           <div>
@@ -21,8 +88,8 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h2 className="text-2xl font-bold text-accent mb-6">
+          <div className="lg:mt-60">
+            <h2 className="text-2xl lg:hidden lg:mt-60 font-bold text-accent mb-6">
               Contact Information
             </h2>
 
@@ -76,7 +143,7 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              {/* Address */}
+              {/* Hours */}
               <motion.div
                 className="flex gap-4"
                 initial={{ opacity: 0, x: 20 }}
@@ -100,24 +167,27 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              {/* Info Box
               <motion.div
-                className="mt-8 p-6 bg-primary/40 border border-accent/40 rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex gap-4"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-semibold text-accent mb-2">
-                  About Your Inquiry
-                </h3>
-                <p className="text-foreground/70 text-sm">
-                  We collaborate with defense attorneys nationwide on federal
-                  sentencing cases. Whether you need comprehensive mitigation
-                  strategy, PSR preparation assistance, or consultation on
-                  specific sentencing issues, we&apos;re here to help.
-                </p>
-              </motion.div> */}
+                <div className="flex-shrink-0">
+                  <ArrowRight className="w-6 h-6 text-accent mt-1" />
+                </div>
+                <div>
+                  <p>
+                    If something time-sensitive comes up, my cell is{" "}
+                    <span className="text-accent">
+                      {" "}
+                      <a href="tel:+1 3104302368">+1 (310) 430-2368</a>
+                    </span>{" "}
+                    — happy to jump on it quickly.
+                  </p>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>

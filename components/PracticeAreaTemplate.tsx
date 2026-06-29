@@ -47,17 +47,17 @@ export default function PracticeAreaTemplate({
   };
 
   return (
-    <div className="min-h-screen bg-primary pt-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-primary">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8">
         {/* Title + Description */}
-        <section className="py-16 lg:pt-20">
+        <section className="py-6 lg:pt-20">
           <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-4xl lg:text-5xl font-bold text-accent mb-4">
+              <h1 className="text-4xl lg:text-5xl font-bold text-accent mb-4  pt-[100px] sm:pt-32">
                 {title}
               </h1>
               <p className="text-lg text-accent">{description}</p>
@@ -74,7 +74,7 @@ export default function PracticeAreaTemplate({
           viewport={{ once: true }}
         >
           <p
-            className="text-lg text-foreground/75 leading-relaxed border-l-4 border-accent pl-6 [&_strong]:text-foreground [&_strong]:font-semibold"
+            className="lg:text-lg text-foreground/75 leading-relaxed border-l-4 border-accent pl-6 [&_strong]:text-foreground [&_strong]:font-semibold"
             dangerouslySetInnerHTML={{ __html: intro }}
           />
         </motion.div>
@@ -93,7 +93,7 @@ export default function PracticeAreaTemplate({
                 {section.title}
               </h2>
               <div
-                className="leading-relaxed space-y-4 text-lg text-foreground/75 [&_strong]:text-foreground [&_strong]:font-semibold"
+                className="leading-relaxed space-y-4 lg:text-lg text-foreground/75 [&_strong]:text-foreground [&_strong]:font-semibold"
                 dangerouslySetInnerHTML={{ __html: section.content }}
               />
             </motion.div>

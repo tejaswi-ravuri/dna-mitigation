@@ -18,21 +18,18 @@ A mitigation video allows the court to see and feel the human being behind the o
 Our work is built around one objective: shaping institutional perception before the PSR, prosecutorial narrative, and sentencing posture become fixed.`,
       link: "How Early Mitigation Videos Shape the PSR →",
     },
-
     {
       id: "testimonial-letters",
       title: "Testimonial Letters",
       preview: `Testimonial letters designed to reinforce credibility, accountability, restitution efforts, family responsibility, and the broader human context courts evaluate under § 3553(a).`,
       link: "How Judges Actually Read Testimonial Letters →",
     },
-
     {
       id: "pre-psr-documentation",
       title: "Pre-PSR Documentation",
       preview: `Pre-PSR documentation strategically curated to substantiate rehabilitation, accountability, restitution efforts, and meaningful corrective action before probation recommendations solidify under § 3553(a).`,
       link: "How Documentation Shapes the PSR →",
     },
-
     {
       id: "3553-focused",
       title: "§ 3553(a) Focused",
@@ -40,12 +37,15 @@ Our work is built around one objective: shaping institutional perception before 
       link: "How § 3553(a) Shapes Sentencing →",
     },
   ];
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
 
-      <section className="relative min-h-[95vh] flex items-center pt-32 pb-48 md:pt-40 md:pb-52 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[62%] h-full">
+      {/* ─── Hero ─────────────────────────────────────────────────────────────── */}
+      <section className="relative min-h-[92vh] sm:min-h-[95vh] flex items-center pt-28 pb-40 sm:pt-32 sm:pb-48 md:pt-40 md:pb-52 overflow-hidden">
+        {/* Background image */}
+        <div className="absolute top-0 right-0 w-full sm:w-[70%] md:w-[62%] h-full">
           <Image
             src="/court-steps.png"
             alt="Federal Courthouse Steps"
@@ -54,9 +54,17 @@ Our work is built around one objective: shaping institutional perception before 
             priority
           />
 
-          {/* Horizontal fade — image bleeds left into solid background */}
+          {/* On mobile: fade from bottom so text on top is readable */}
+          {/* On sm+: fade from left so hero text is clear */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 sm:hidden"
+            style={{
+              background:
+                "linear-gradient(to bottom, var(--background) 0%, color-mix(in srgb, var(--background) 80%, transparent) 25%, color-mix(in srgb, var(--background) 50%, transparent) 55%, transparent 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 hidden sm:block"
             style={{
               background:
                 "linear-gradient(to right, var(--background) 0%, var(--background) 15%, transparent 55%)",
@@ -66,7 +74,7 @@ Our work is built around one objective: shaping institutional perception before 
 
         {/* Bottom fade — cinematic bleed into cards section */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-64"
+          className="absolute bottom-0 left-0 right-0 h-48 sm:h-64"
           style={{
             background:
               "linear-gradient(to top, var(--background) 0%, color-mix(in srgb, var(--background) 60%, transparent) 60%, transparent 100%)",
@@ -83,19 +91,20 @@ Our work is built around one objective: shaping institutional perception before 
               className="max-w-3xl"
             >
               <h1
-                className="text-5xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 leading-tight"
                 style={{ fontFamily: "Cormorant Garamond" }}
               >
                 Mitigation Videos Built Early,
                 <br /> <em className="text-gold-metallic">Before the PSR</em>
                 <br /> Defines Your Client
               </h1>
-              <p className="text-lg md:text-xl text-white mb-8 leading-relaxed">
-                Pre-PSR video advocacy designed to shape how <br />
+              <p className="text-base sm:text-lg md:text-xl text-white mb-7 sm:mb-8 leading-relaxed">
+                Pre-PSR video advocacy designed to shape how{" "}
+                <br className="hidden sm:block" />
                 <span className="text-gold-metallic font-bold">
                   probation, prosecutors, and the judge
                 </span>{" "}
-                <br />
+                <br className="hidden sm:block" />
                 understand your client before sentencing narratives harden.
               </p>
               <motion.div
@@ -109,7 +118,7 @@ Our work is built around one objective: shaping institutional perception before 
               >
                 <Link
                   href="/schedule-consultation"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-gold-metallic text-primary rounded-lg hover:bg-accent/90 transition-all font-semibold"
+                  className="inline-flex items-center justify-center px-7 sm:px-8 py-3 bg-gold-metallic text-primary rounded-lg hover:bg-accent/90 transition-all font-semibold text-sm sm:text-base"
                 >
                   Book Consultation
                 </Link>
@@ -119,16 +128,17 @@ Our work is built around one objective: shaping institutional perception before 
         </div>
       </section>
 
-      <section className="relative z-10 -mt-16 pb-16 md:pb-20">
+      {/* ─── Expandable blocks ────────────────────────────────────────────────── */}
+      <section className="relative z-10 -mt-12 sm:-mt-16 pb-14 sm:pb-16 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ExpandableContentBlock blocks={homeBlocks} />
         </div>
       </section>
 
       {/* ─── Stats ────────────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 bg-card border-y border-accent/20">
+      <section className="py-14 sm:py-16 md:py-20 bg-card border-y border-accent/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center">
             {[
               { value: "30+", label: "Federal Mitigation Matters" },
               { value: "180+", label: "Years Guideline Exposure Avoided" },
@@ -147,12 +157,14 @@ Our work is built around one objective: shaping institutional perception before 
                 className={i === 2 ? "col-span-2 md:col-span-1" : ""}
               >
                 <div
-                  className="text-3xl md:text-4xl font-bold text-accent mb-2"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-2"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {stat.value}
                 </div>
-                <p className="text-foreground/70 text-sm">{stat.label}</p>
+                <p className="text-foreground/70 text-xs sm:text-sm">
+                  {stat.label}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -160,7 +172,7 @@ Our work is built around one objective: shaping institutional perception before 
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-16 sm:py-20 md:py-28 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -169,17 +181,17 @@ Our work is built around one objective: shaping institutional perception before 
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground/75 mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground/75 mb-5 sm:mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Reserve a 32-Minute Mitigation Strategy Session
             </h2>
-            <p className="text-lg text-foreground mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-foreground mb-7 sm:mb-8 leading-relaxed">
               What if court met the person before reading the file?
             </p>
             <Link
               href="/schedule-consultation"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gold-metallic text-primary rounded-lg hover:bg-accent/90 transition-all font-semibold text-lg"
+              className="inline-flex items-center justify-center px-7 sm:px-8 py-3.5 sm:py-4 bg-gold-metallic text-primary rounded-lg hover:bg-accent/90 transition-all font-semibold text-base sm:text-lg"
             >
               Book Consultation
             </Link>

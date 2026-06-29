@@ -14,7 +14,9 @@ export const validatePhone = (phone: string): boolean => {
 // Email sending
 export const sendEmail = async (to: string, subject: string, html: string) => {
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtpout.secureserver.net",
+    port: 587, // SSL
+    secure: true,
     auth: {
       user: process.env.NODEMAILER_EMAIL,
       pass: process.env.NODEMAILER_PASSWORD,
@@ -27,6 +29,8 @@ export const sendEmail = async (to: string, subject: string, html: string) => {
     subject,
     html,
   };
+  await transporter.verify();
+  console.log("SMTP Server is ready");
 
   try {
     await transporter.sendMail(mailOptions);
