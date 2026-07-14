@@ -185,9 +185,15 @@ export default function CaseStudiesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
             {[
-              { value: "30+", label: "Federal Mitigation Matters" },
-              { value: "180+", label: "Years Guideline Exposure Avoided" },
-              { value: "1300+", label: "Testimonial Letters Submitted" },
+              { value: "30+", label: "Federal Sentencing Matters" },
+              {
+                value: "PRE-PSR",
+                label: "Mitigation Developed Before the PSR",
+              },
+              {
+                value: "1300+",
+                label: "Character Reference Letters Coordinated",
+              },
             ].map((stat, i) => (
               <motion.div
                 key={stat.value}
