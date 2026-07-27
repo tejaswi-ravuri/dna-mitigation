@@ -66,7 +66,8 @@ export const caseStudies: CaseStudy[] = [
       judge: "Hon. Pamela Chen",
       role: "Film, Edit",
     },
-    problem: `The former owner of a major New York construction company faced an <strong>11-count federal indictment</strong> tied to a union fund embezzlement scheme, a <strong>$76 million damages award</strong>, and a guideline range of <strong>70–87 months.</strong>`,
+
+    problem: `The former owner of a major New York construction company was <strong>convicted at trial on 11 counts</strong> in a union benefit funds fraud prosecution, facing a <strong>guideline range of 70–87 months.</strong>`,
     strategy: `The sentencing video repositioned the defendant through decades of civic leadership, including deploying heavy construction machinery at his own expense to Hurricane Sandy and Katrina disaster zones before FEMA arrived.`,
     outcome: `<strong>6-month custodial sentence</strong> against an 87-month guideline range.`,
     coverage: [
@@ -112,7 +113,7 @@ export const caseStudies: CaseStudy[] = [
   // Outcome: "1 year and 1 day" bold, "2 months later" bold
   {
     id: 4,
-    title: "14 years of exposure. A childhood story changed everything.",
+    title: "A 5–7 year guideline range. A childhood story changed everything.",
     meta: {
       district: "S.D.N.Y.",
       caseNo: "21-2049",
@@ -121,9 +122,9 @@ export const caseStudies: CaseStudy[] = [
       judge: "Hon. Vernon S. Broderick",
       role: "Film, Edit",
     },
-    problem: `CEO faced approximately <strong>14 years federal imprisonment</strong> in a wire fraud overbilling prosecution.`,
-    strategy: `Our sentencing video surfaced severe childhood trauma and personal history that had not fully translated through traditional written advocacy alone, allowing the Court to see the full human being behind the indictment.`,
-    outcome: `Our client ultimately received a sentence of <strong>1 year and 1 day</strong> and was released from custody approximately <strong>2 months later</strong> during the CARES Act period.`,
+    problem: `A payments company CEO was convicted at trial of wire fraud and faced a <strong>5–7 year advisory guideline range.</strong>`,
+    strategy: `Our sentencing video surfaced severe childhood trauma and personal history that had not fully translated through traditional written advocacy alone, allowing the Court to see the full human being behind the conviction.`,
+    outcome: `The Court imposed a sentence of <strong>1 year and 1 day,</strong> a substantial downward variance from the advisory guideline range. The client was released from custody approximately <strong>2 months later</strong> during the CARES Act period.`,
   },
 
   // ── 05 ──────────────────────────────────────────────

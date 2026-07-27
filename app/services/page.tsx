@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { practiceAreas } from "@/lib/data/practiceAreas";
 import { ArrowRight } from "lucide-react";
 
-export default function PracticeAreasPage() {
+export default function ServicesPage() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -41,7 +41,7 @@ export default function PracticeAreasPage() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl lg:text-5xl font-bold text-accent mb-4">
-              Practice Areas
+              Services
             </h1>
             <p className="text-lg text-foreground/75">
               Specialized federal sentencing advocacy across all key practice
@@ -51,7 +51,7 @@ export default function PracticeAreasPage() {
         </div>
       </section>
 
-      {/* Practice Areas Grid */}
+      {/* Services Grid */}
       <section className="py-10  px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -63,7 +63,7 @@ export default function PracticeAreasPage() {
           >
             {practiceAreas.map((area) => (
               <motion.div key={area.id} variants={itemVariants}>
-                <Link href={`/practice-areas/${area.slug}`}>
+                <Link href={`/services/${area.slug}`}>
                   <div className="h-full bg-primary/40 border-2 border-accent/40 rounded-xl p-8 hover:border-accent/80 hover:bg-primary/60 transition-all duration-300 cursor-pointer group">
                     <h3 className="text-2xl font-bold text-accent mb-3 group-hover:text-accent/80 transition-colors">
                       {area.title}

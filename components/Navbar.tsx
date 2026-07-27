@@ -27,11 +27,11 @@ export default function Navbar() {
   }, [isOpen]);
 
   const practiceAreas = [
-    { label: "Federal Sentencing Mitigation", slug: "federal-sentencing" },
-    { label: "White Collar Criminal Defense", slug: "white-collar" },
+    { label: "Federal Sentencing Mitigation Videos", slug: "federal-sentencing" },
+    { label: "White Collar Sentencing Mitigation", slug: "white-collar" },
     { label: "Catastrophic Personal Injury", slug: "personal-injury" },
-    { label: "Catastrophic Workplace Injury", slug: "workplace-injury" },
-    { label: "Wrongful Death Litigation", slug: "wrongful-death" },
+    { label: "Catastrophic Injury Settlement Documentaries", slug: "workplace-injury" },
+    { label: "Wrongful Death Settlement Documentaries", slug: "wrongful-death" },
     { label: "Narrative Mitigation Strategy", slug: "narrative-mitigation" },
   ];
 
@@ -83,10 +83,10 @@ export default function Navbar() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
               </Link>
 
-              {/* Practice Areas Dropdown */}
+              {/* Services Dropdown */}
               <div className="relative group">
                 <button className="text-foreground hover:text-accent transition-colors duration-200 text-sm font-medium flex items-center gap-1 relative group/btn">
-                  Practice Areas
+                  Services
                   <ChevronDown
                     size={16}
                     className="group-hover/btn:rotate-180 transition-transform"
@@ -97,7 +97,7 @@ export default function Navbar() {
                   {practiceAreas.map((area) => (
                     <Link
                       key={area.slug}
-                      href={`/practice-areas/${area.slug}`}
+                      href={`/services/${area.slug}`}
                       className="block px-4 py-2.5 text-foreground hover:text-accent hover:bg-accent/10 transition-colors text-sm"
                     >
                       {area.label}
@@ -202,14 +202,14 @@ export default function Navbar() {
             </Link>
           ))}
 
-          {/* Practice Areas accordion */}
+          {/* Services accordion */}
           <div>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="w-full flex items-center justify-between py-4 text-foreground/80 hover:text-accent transition-colors duration-200"
             >
               <span className="text-[15px] font-medium tracking-wide">
-                Practice Areas
+                Services
               </span>
               <ChevronDown
                 size={16}
@@ -226,7 +226,7 @@ export default function Navbar() {
                 {practiceAreas.map((area) => (
                   <Link
                     key={area.slug}
-                    href={`/practice-areas/${area.slug}`}
+                    href={`/services/${area.slug}`}
                     onClick={() => setIsOpen(false)}
                     className="block py-2.5 px-3 text-[13px] text-foreground/60 hover:text-accent transition-colors duration-150"
                   >

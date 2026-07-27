@@ -27,7 +27,7 @@ export const practiceAreas: PracticeArea[] = [
   // ─────────────────────────────────────────────────────────────
   {
     slug: "federal-sentencing",
-    title: "Federal Sentencing Mitigation",
+    title: "Federal Sentencing Mitigation Videos",
     description:
       "Strategic Mitigation Videos Built Early, Before the PSR Defines Your Client",
     intro: `Pre-PSR video advocacy designed to shape how <strong>probation, prosecutors, and the court</strong> understand your client before sentencing narratives harden.`,
@@ -71,7 +71,7 @@ export const practiceAreas: PracticeArea[] = [
   // ─────────────────────────────────────────────────────────────
   {
     slug: "white-collar",
-    title: "White Collar Criminal Defense",
+    title: "White Collar Sentencing Mitigation",
     description:
       "Strategic Mitigation Videos Built Early, Before the PSR Defines Your Client",
     intro: `Pre-PSR video advocacy designed to shape how <strong>probation, prosecutors, and the judge</strong> understand your client before sentencing narratives harden.`,
@@ -166,7 +166,7 @@ export const practiceAreas: PracticeArea[] = [
   // ─────────────────────────────────────────────────────────────
   {
     slug: "workplace-injury",
-    title: "Catastrophic Workers' Injury",
+    title: "Catastrophic Injury Settlement Documentaries",
     description:
       "Your Client's Human Story Built Early, Before the Defense Defines the Damages",
     intro: `Settlement documentaries, testimonial interviews, and expert documentation that shape how <strong>insurers, mediators, and juries</strong> see the lived reality of catastrophic workplace injury before litigation positions harden.`,
@@ -209,7 +209,7 @@ export const practiceAreas: PracticeArea[] = [
   // ─────────────────────────────────────────────────────────────
   {
     slug: "wrongful-death",
-    title: "Wrongful Death Litigation",
+    title: "Wrongful Death Settlement Documentaries",
     description:
       "Your Client's Human Story Built Early, Before the Defense Defines the Damages",
     intro: `Settlement documentaries, testimonial interviews, and expert documentation that shape how <strong>insurers, mediators, and juries</strong> understand the human loss behind wrongful death claims before litigation positions harden.`,

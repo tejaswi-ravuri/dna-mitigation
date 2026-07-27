@@ -8,16 +8,16 @@ import { useEffect, useState } from "react";
 // Pages associated with criminal/sentencing work
 const CRIMINAL_PAGES = [
   "/",
-  "/practice-areas/federal-sentencing",
-  "/practice-areas/white-collar",
-  "/practice-areas/narrative-mitigation",
+  "/services/federal-sentencing",
+  "/services/white-collar",
+  "/services/narrative-mitigation",
 ];
 
 // Pages associated with civil/injury work
 const INJURY_PAGES = [
-  "/practice-areas/personal-injury",
-  "/practice-areas/workplace-injury",
-  "/practice-areas/wrongful-death",
+  "/services/personal-injury",
+  "/services/workplace-injury",
+  "/services/wrongful-death",
 ];
 
 // Shared pages that inherit tagline from previous page
@@ -31,14 +31,18 @@ const SHARED_PAGES = [
 const CRIMINAL_TAGLINE = (
   <>
     Nothing shows the human being behind the conduct like a mitigation video.
-    <br /> We make the ones that change sentences.
+    <br /> We make the ones that help change sentences.
+    <br />
+    Built early. Reviewed by counsel. Seen by the court.
   </>
 );
 
 const INJURY_TAGLINE = (
   <>
     Nothing shows the human being behind the injury like a video.
-    <br /> We make the ones that change verdicts.
+    <br /> We make the ones that help change verdicts.
+    <br />
+    Built early. Reviewed by counsel. Seen by the court.
   </>
 );
 
@@ -90,6 +94,10 @@ export default function Footer() {
                 © {new Date().getFullYear()} DNA Mitigation. All rights
                 reserved.
               </p>
+              <p className="text-foreground/60 text-xs">
+                DNA Mitigation is not a law firm and works exclusively at the
+                direction of defense counsel.
+              </p>
             </div>
 
             {/* Quick Links */}
@@ -119,10 +127,10 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/practice-areas"
+                    href="/services"
                     className="text-foreground/70 hover:text-accent transition-colors"
                   >
-                    Practice Areas
+                    Services
                   </Link>
                 </li>
                 <li>
