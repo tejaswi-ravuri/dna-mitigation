@@ -27,12 +27,30 @@ export default function Navbar() {
   }, [isOpen]);
 
   const practiceAreas = [
-    { label: "Federal Sentencing Mitigation Videos", slug: "federal-sentencing" },
-    { label: "White Collar Sentencing Mitigation", slug: "white-collar" },
-    { label: "Catastrophic Personal Injury", slug: "personal-injury" },
-    { label: "Catastrophic Injury Settlement Documentaries", slug: "workplace-injury" },
-    { label: "Wrongful Death Settlement Documentaries", slug: "wrongful-death" },
-    { label: "Narrative Mitigation Strategy", slug: "narrative-mitigation" },
+    {
+      label: "Federal Sentencing Mitigation Videos",
+      slug: "federal-sentencing",
+    },
+    {
+      label: "White Collar Sentencing Mitigation Videos",
+      slug: "white-collar",
+    },
+    {
+      label: "Catastrophic Personal Injury Documentaries",
+      slug: "personal-injury",
+    },
+    {
+      label: "Catastrophic Injury Settlement Documentaries",
+      slug: "workplace-injury",
+    },
+    {
+      label: "Wrongful Death Settlement Documentaries",
+      slug: "wrongful-death",
+    },
+    {
+      label: "Narrative Mitigation Strategy Videos",
+      slug: "narrative-mitigation",
+    },
   ];
 
   const navLinks = [
